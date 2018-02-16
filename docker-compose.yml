@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  interpreter:
+    image: haskell:8
+    volumes:
+      - "./src:/src"
+    working_dir: "/src"
+    command: runghc interpreter.hs
+
+
+
