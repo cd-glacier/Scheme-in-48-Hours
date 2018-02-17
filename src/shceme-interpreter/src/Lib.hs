@@ -1,5 +1,5 @@
 module Lib
-    ( someFunc
+    ( someFunc 
     ) where
 import System.Environment
 import Text.ParserCombinators.Parsec hiding (spaces)
@@ -41,13 +41,15 @@ parseAtom = do
         _ -> Atom atom
 
 parseNumber :: Parser LispVal
-parseNumber = liftM(Number . read) $ many1 digit
+parseNumber = do
+    num <- liftM(Number . read) $ many1 digit
+    return num
 
 parseExpr :: Parser LispVal
 parseExpr = parseAtom
     <|> parseString
     <|> parseNumber
-    
+
 someFunc :: IO ()
 someFunc = do
     args <- getArgs
