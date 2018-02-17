@@ -6,7 +6,9 @@ import System.Environment
 someFunc :: IO ()
 someFunc = do
     args <- getArgs
-    putStrLn ("Hello, " ++ head args ++ ", welcome " ++ args !! 1)
+    let first = read (head args) :: Double
+    let second = read (args !! 1) :: Double
+    print $ first + second 
 
 
 
