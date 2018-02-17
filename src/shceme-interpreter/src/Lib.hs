@@ -6,7 +6,7 @@ import Text.ParserCombinators.Parsec hiding (spaces)
 import Control.Monad
 
 symbol :: Parser Char
-symbol = oneOf "!#$%|*+-/:<=>?@^_~"
+symbol = oneOf "!#$%|*+-/:<=>?@^_\n\r\t\\~"
 
 readExpr :: String -> String
 readExpr input = case parse parseExpr "lisp" input of
