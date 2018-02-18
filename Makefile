@@ -1,3 +1,8 @@
+init:
+
+
+build-image:
+	docker build -t stack1.6 .
 
 run:
 	docker-compose up

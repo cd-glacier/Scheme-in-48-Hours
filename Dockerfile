@@ -1,8 +1,16 @@
-FROM haskell:8
+FROM ubuntu 
 
-CMD ["stack", "upgrade"]
+RUN ["apt-get", "update"]
 
-CMD ["cd", "/src" "&&", "stack", "new" "scheme-interpreter"]
+RUN ["apt-get", "install", "-y", "curl"]
 
-WORKDIR /src/scheme-interpreter
+RUN ["curl", "-sSL", "'https://get.haskellstack.org/'", "|", "sh"]
+
+RUN ["export", "PATH=$PATH:/root/.local/bin"]
+
+RUN ["stack", "upgrade", "--binary-version", "1.6.3"]
+
+RUN ["stack", "new", "/src/shceme-interpreter"]
+
+WORKDIR /src/shceme-interpreter
 
