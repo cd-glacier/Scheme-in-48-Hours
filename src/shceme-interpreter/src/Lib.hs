@@ -55,7 +55,7 @@ parseExpr = parseAtom
         return x
 
 parseList :: Parser LispVal
-parseList = liftM List $ sepBy parseExpr spaces
+parseList = sepBy parseExpr spaces >>= return . List 
 
 parseDottedList :: Parser LispVal
 parseDottedList = do
